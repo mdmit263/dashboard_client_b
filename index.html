@@ -118,11 +118,11 @@
 <!-- Sample data: one site marked shipped for layout demo purposes -->
 <div class="bar">
   <div class="brand"><div class="logo">RE</div>REV Engineering · Client B Delivery Portal</div>
-  <div class="seg"><button id="bC" class="active">Customer Portal</button><button id="bI">Internal — REV Team</button></div>
-  <div class="note" id="note">Customer view · data as of Oct 20, 2026</div>
+  <div class="seg"><button id="bC" class="active">Client Portal</button><button id="bI">Internal — REV Team</button></div>
+  <div class="note" id="note">Client view · data as of Oct 20, 2026</div>
 </div>
 
-<!-- ============ CUSTOMER ============ -->
+<!-- ============ Client ============ -->
 <div class="view active" id="cust">
   <div class="hero"><div class="hero-in">
     <div><h1>Client B Delivery Portal</h1></div>
@@ -306,7 +306,7 @@ const SV = {job:s=>s.job, location:s=>s.location.toLowerCase(), sw:s=>s.variant|
 const sortRows=(rows,st)=>rows.slice().sort((a,b)=>{const x=SV[st.k](a),y=SV[st.k](b); return (x<y?-1:x>y?1:a.job.localeCompare(b.job))*st.d;});
 function markSort(tbl,st){ tbl.querySelectorAll('th[data-sort]').forEach(th=>{ th.textContent=th.textContent.replace(/ [▲▼]$/,''); if(th.dataset.sort===st.k) th.textContent+=st.d>0?' ▲':' ▼'; }); }
 
-/* ---------- customer ---------- */
+/* ---------- Client ---------- */
 const cf = {status:null, kpi:null}; let cSort={k:'job',d:1}, cRows=[];
 const next30 = s => s.status!=='Shipped' && s.pd && days(ASOF,s.pd)>=0 && days(ASOF,s.pd)<=30;
 const N = SITES.length, nShip = SITES.filter(s=>s.status==='Shipped').length, nReady = SITES.filter(s=>s.status==='Ready to Ship').length;
@@ -408,8 +408,8 @@ iS.onchange=iTable; $('iQ').oninput=iTable; iTable();
 
 /* ---------- view switch ---------- */
 const bC=$('bC'), bI=$('bI'), nt=$('note');
-bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Customer view · data as of Oct 20, 2026';};
-bI.onclick=()=>{closeSheet();bI.classList.add('active');bC.classList.remove('active');$('intl').classList.add('active');$('cust').classList.remove('active');nt.textContent='Internal view · not for customer distribution';};
+bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Client view · data as of Oct 20, 2026';};
+bI.onclick=()=>{closeSheet();bI.classList.add('active');bC.classList.remove('active');$('intl').classList.add('active');$('cust').classList.remove('active');nt.textContent='Internal view · not for Client distribution';};
 
 </script>
 </body>
