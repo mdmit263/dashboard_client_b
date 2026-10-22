@@ -191,14 +191,14 @@
 <div class="bar">
   <div class="brand"><div class="logo">RE</div>REV Engineering · Client B Delivery Portal</div>
   <div class="seg"><button id="bC" class="active">Client Portal</button><button id="bI">Internal — REV Team</button></div>
-  <div class="note" id="note">Client view · data as of Oct 9, 2026</div>
+  <div class="note" id="note">Client view · data as of Oct 21, 2026</div>
 </div>
 
 <!-- ============ CUSTOMER ============ -->
 <div class="view active" id="cust">
   <div class="hero"><div class="hero-in">
     <div><h1>Client B Delivery Portal</h1></div>
-    <div class="meta">PO <b>489</b> &middot; Job <b>M200489</b><br>As of <b>Oct 9, 2026</b></div>
+    <div class="meta">PO <b>489</b> &middot; Job <b>M200489</b><br>As of <b>Oct 21, 2026</b></div>
   </div></div>
   <div class="body">
     <div class="kpis" id="cKpis"></div>
@@ -226,7 +226,7 @@
 <div class="view" id="intl">
   <div class="body" style="padding-top:24px">
     <h1 style="margin:0 0 4px;font-size:22px;color:var(--rev-navy)">Client B PO 489 — Internal Tracker<span class="badge-int">INTERNAL</span></h1>
-    <div style="font-size:12.5px;color:var(--text-muted)">Source: Client B PO Tracker (Sheet1) + Breaker Delivery tab (dated Sep 9, 2026) &middot; shown as of Oct 9, 2026</div>
+    <div style="font-size:12.5px;color:var(--text-muted)">Source: Client B PO Tracker (Sheet1) + Breaker Delivery tab (dated Sep 9, 2026) &middot; shown as of Oct 21, 2026</div>
     <div class="kpis" style="margin-top:18px" id="iKpis"></div>
     <div class="grid">
       <div class="panel"><h2>Data to confirm</h2><div id="iFlags"></div></div>
@@ -617,7 +617,7 @@ iS.onchange=iTable; $('iQ').oninput=iTable; iTable();
 
 /* ---------- view switch ---------- */
 const bC=$('bC'), bI=$('bI'), nt=$('note');
-bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Client view · data as of Oct 9, 2026';};
+bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Client view · data as of Oct 21, 2026';};
 bI.onclick=()=>{closeSheet();bI.classList.add('active');bC.classList.remove('active');$('intl').classList.add('active');$('cust').classList.remove('active');nt.textContent='Internal view · not for customer distribution';};
 
 </script>
