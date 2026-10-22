@@ -108,6 +108,78 @@
   .flag[data-job]:hover{background:#F8FAFC;} svg rect[data-month]:hover,svg rect[data-prov]:hover,svg rect[data-brk]:hover{filter:brightness(1.12);}
   .btn{border:1px solid var(--border);background:#fff;border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:600;color:var(--rev-navy);cursor:pointer;font-family:inherit;} .btn:hover{background:#F1F5F9;}
   @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr);}.grid{grid-template-columns:1fr;}.body,.hero,.bar{padding-left:16px;padding-right:16px;}}
+:root{--rev-panel:#FFFFFF;--rev-border:#E2E8F0;}
+  /* ---- Shipment impacts & open items ---- */
+  .imp-panel{background:var(--rev-panel);border:1px solid var(--rev-border);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);}
+  .imp-intro{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin:0 0 16px;max-width:760px;}
+  .imp-sum{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .imp-sum .t{flex:1;min-width:150px;border:1px solid var(--rev-border);border-radius:10px;padding:11px 14px;background:#F8FAFC;}
+  .imp-sum .t b{display:block;font-size:22px;color:var(--rev-navy);line-height:1.1;}
+  .imp-sum .t span{font-size:11.5px;color:var(--text-muted);font-weight:600;}
+  .imp-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .imp-chip{border:1px solid var(--rev-border);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--text-muted);cursor:pointer;font-family:inherit;}
+  .imp-chip.active{background:var(--rev-navy);border-color:var(--rev-navy);color:#fff;}
+  .imp-list{display:flex;flex-direction:column;gap:12px;}
+  .imp-card{display:grid;grid-template-columns:5px 1fr;border:1px solid var(--rev-border);border-radius:12px;overflow:hidden;background:#fff;}
+  .imp-card .ibar{background:var(--ic,#64748B);}
+  .imp-card .in{padding:14px 18px 15px;}
+  .imp-card.resolved{opacity:.72;}
+  .imp-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px;}
+  .imp-pill{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;color:var(--ic);background:var(--ib);}
+  .imp-st{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#E2E8F0;color:#334155;}
+  .imp-st.open{background:#FEF3C7;color:#92400E;} .imp-st.wait{background:#DCE8F7;color:#1B3B6F;} .imp-st.done{background:#DCFCE7;color:#166534;}
+  .imp-title{font-size:15px;font-weight:800;color:var(--rev-navy);margin:0 0 4px;}
+  .imp-detail{font-size:13px;color:var(--text);line-height:1.55;margin:0 0 10px;white-space:pre-line;}
+  .imp-meta{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);}
+  .imp-meta b{color:var(--text);font-weight:700;}
+  .imp-meta .due-over{color:#B91C1C;font-weight:800;} .imp-meta .due-soon{color:#B45309;font-weight:800;}
+  .imp-days{font-weight:800;color:#B45309;}
+  .imp-flag{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-size:10.5px;font-weight:800;color:#92400E;background:#FEF3C7;border-radius:999px;padding:2px 8px;vertical-align:middle;white-space:nowrap;}
+  .imp-fleet{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:800;color:#92400E;background:#FEF3C7;border-radius:999px;padding:3px 10px;cursor:pointer;}
+  .uimp{border:1px solid #F5D9A5;background:#FFFBEB;border-radius:12px;padding:12px 14px;margin:-4px 0 16px;}
+  .uimp h5{margin:0 0 8px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:#92400E;}
+  .uimp .u1{padding:8px 0;border-top:1px solid #F5E3BE;} .uimp .u1:first-of-type{border-top:0;padding-top:0;}
+  .uimp .u1 b{display:block;font-size:13px;color:var(--rev-navy);} .uimp .u1 span{font-size:12px;color:var(--text);line-height:1.5;display:block;margin-top:2px;}
+  .uimp .u1 em{font-style:normal;font-size:11.5px;color:var(--text-muted);display:block;margin-top:3px;}
+
+  .imp-more{display:block;margin:14px auto 0;border:1px solid var(--rev-border);background:#fff;border-radius:999px;padding:7px 18px;font-size:12.5px;font-weight:800;color:var(--rev-navy);cursor:pointer;font-family:inherit;}
+
+  .cv-status-pill.click{cursor:pointer;} .cv-status-pill.click:hover{filter:brightness(.96);box-shadow:0 0 0 2px rgba(180,83,9,.18);}
+  .wch-back{position:fixed;inset:0;background:rgba(7,26,51,.55);z-index:400;display:none;align-items:center;justify-content:center;padding:20px;}
+  .wch-back.open{display:flex;}
+  .wch{background:#fff;border-radius:16px;max-width:760px;width:100%;max-height:86vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(7,26,51,.35);overflow:hidden;}
+  .wch-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 22px 12px;border-bottom:1px solid var(--rev-border);}
+  .wch-h h3{margin:0;font-size:17px;color:var(--rev-navy);} .wch-h p{margin:4px 0 0;font-size:12.5px;color:var(--text-muted);line-height:1.5;}
+  .wch-x{border:1px solid var(--rev-border);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px;color:var(--text-muted);}
+  .wch-b{padding:14px 22px 20px;overflow:auto;}
+  .wch-b table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px;}
+  .wch-b th{background:#F1F5F9 !important;color:#475569 !important;text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:6px 8px;border-bottom:1px solid var(--rev-border);}
+  .wch-b td{padding:8px;border-bottom:1px solid #EEF2F7;} .wch-b tr.wu{cursor:pointer;} .wch-b tr.wu:hover td{background:#F8FAFC;}
+  .wch-late{font-weight:800;color:#B45309;}
+  .wch-note{border:1px solid #F5D9A5;background:#FFFBEB;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:12.5px;line-height:1.5;}
+  .wch-note b{color:var(--rev-navy);display:block;}
+  .wch-go{margin-top:14px;display:inline-block;background:var(--rev-navy);color:#fff;border:0;border-radius:999px;padding:8px 18px;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;}
+
+  .cv-status-pill.click{cursor:pointer;} .cv-status-pill.click:hover{filter:brightness(.96);box-shadow:0 0 0 2px rgba(180,83,9,.18);}
+  .wch-back{position:fixed;inset:0;background:rgba(7,26,51,.55);z-index:400;display:none;align-items:center;justify-content:center;padding:20px;}
+  .wch-back.open{display:flex;}
+  .wch{background:#fff;border-radius:16px;max-width:760px;width:100%;max-height:86vh;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(7,26,51,.35);overflow:hidden;}
+  .wch-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 22px 12px;border-bottom:1px solid var(--rev-border);}
+  .wch-h h3{margin:0;font-size:17px;color:var(--rev-navy);} .wch-h p{margin:4px 0 0;font-size:12.5px;color:var(--text-muted);line-height:1.5;}
+  .wch-x{border:1px solid var(--rev-border);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px;color:var(--text-muted);}
+  .wch-b{padding:14px 22px 20px;overflow:auto;}
+  .wch-b table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px;}
+  .wch-b th{background:#F1F5F9 !important;color:#475569 !important;text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);padding:6px 8px;border-bottom:1px solid var(--rev-border);}
+  .wch-b td{padding:8px;border-bottom:1px solid #EEF2F7;} .wch-b tr.wu{cursor:pointer;} .wch-b tr.wu:hover td{background:#F8FAFC;}
+  .wch-late{font-weight:800;color:#B45309;}
+  .wch-note{border:1px solid #F5D9A5;background:#FFFBEB;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:12.5px;line-height:1.5;}
+  .wch-note b{color:var(--rev-navy);display:block;}
+  .wch-go{margin-top:14px;display:inline-block;background:var(--rev-navy);color:#fff;border:0;border-radius:999px;padding:8px 18px;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;}
+
+  .wpill{display:inline-flex;align-items:center;gap:6px;margin:8px 0 2px;padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:700;}
+  .wpill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+  .wpill.ontrack{background:var(--green-bg);color:var(--green);} .wpill.watch{background:var(--amber-bg);color:var(--amber);cursor:pointer;} .wpill.late{background:var(--red-bg);color:var(--red);cursor:pointer;}
+  .wpill.watch:hover,.wpill.late:hover{box-shadow:0 0 0 2px rgba(15,23,42,.1);}
 </style>
 <style id="hideInternal">/* Internal view hidden for now: delete this block to bring it back */
 .seg, #intl { display:none !important; }
@@ -119,26 +191,29 @@
 <div class="bar">
   <div class="brand"><div class="logo">RE</div>REV Engineering · Client B Delivery Portal</div>
   <div class="seg"><button id="bC" class="active">Client Portal</button><button id="bI">Internal — REV Team</button></div>
-  <div class="note" id="note">Client view · data as of Oct 20, 2026</div>
+  <div class="note" id="note">Client view · data as of Oct 9, 2026</div>
 </div>
 
-<!-- ============ Client ============ -->
+<!-- ============ CUSTOMER ============ -->
 <div class="view active" id="cust">
   <div class="hero"><div class="hero-in">
     <div><h1>Client B Delivery Portal</h1></div>
-    <div class="meta">PO <b>489</b> &middot; Job <b>M200489</b><br>As of <b>Oct 20, 2026</b></div>
+    <div class="meta">PO <b>489</b> &middot; Job <b>M200489</b><br>As of <b>Oct 9, 2026</b></div>
   </div></div>
   <div class="body">
     <div class="kpis" id="cKpis"></div>
     <div class="label">Order Status</div>
     <div class="panel" style="margin-top:0">
       <h2>Where each site stands</h2>
+      <div id="wpillWrap"></div>
       <div class="stack" id="cStack"></div><div class="legend" id="cLegend"></div>
     </div>
     <div class="grid">
       <div class="panel"><h2>Planned ship dates by month</h2><svg id="cMonth" width="100%" viewBox="0 0 640 230"></svg></div>
       <div class="panel"><h2>Sites by province</h2><svg id="cProv" width="100%" viewBox="0 0 640 230"></svg></div>
     </div>
+    <div style="background:#FEF3C7;color:#92400E;font-weight:700;font-size:12px;padding:8px 14px;border-radius:8px;margin:18px 0 0;">LAYOUT PREVIEW &mdash; the notices below are sample text, not real shipment impacts.</div><div id="cvImpactWrap"></div>
+
     <div class="label">Site List</div>
     <div class="toolbar"><input id="cQ" placeholder="Search site, job or PO&hellip;"><select id="cProvSel"></select><select id="cStatSel"></select><span id="cChips"></span><div class="count" id="cCount"></div></div>
     <div class="tw"><table><thead><tr><th></th><th data-sort="job">Job</th><th data-sort="location">Site</th><th data-sort="sw">Switchboard</th><th data-sort="tfx">Transformer</th><th data-sort="brk">Breakers</th><th data-sort="status">Status</th><th data-sort="plan">Planned Ship</th><th data-sort="ship">Shipped</th></tr></thead><tbody id="cBody"></tbody></table></div>
@@ -151,7 +226,7 @@
 <div class="view" id="intl">
   <div class="body" style="padding-top:24px">
     <h1 style="margin:0 0 4px;font-size:22px;color:var(--rev-navy)">Client B PO 489 — Internal Tracker<span class="badge-int">INTERNAL</span></h1>
-    <div style="font-size:12.5px;color:var(--text-muted)">Source: Client B PO Tracker (Sheet1) + Breaker Delivery tab (dated Sep 9, 2026) &middot; shown as of Oct 20, 2026</div>
+    <div style="font-size:12.5px;color:var(--text-muted)">Source: Client B PO Tracker (Sheet1) + Breaker Delivery tab (dated Sep 9, 2026) &middot; shown as of Oct 9, 2026</div>
     <div class="kpis" style="margin-top:18px" id="iKpis"></div>
     <div class="grid">
       <div class="panel"><h2>Data to confirm</h2><div id="iFlags"></div></div>
@@ -175,6 +250,139 @@ const days = (a,b)=> Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00')
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $ = id => document.getElementById(id);
 const isInt = () => $('intl').classList.contains('active');
+
+/* ============================================================
+   ORDER NOTES (shipment impacts & open items)
+   Add one object per item to IMPACTS. Leave the list empty and the section stays hidden.
+   {
+     id:'IMP-001',
+     category:'schedule' | 'changeorder' | 'action' | 'changerequest' | 'material' | 'other',
+     title:'Short headline',
+     detail:'What is happening and why it affects shipment. Plain language.',
+     scope:{type:'ALL'}  or  {jobs:['M200489-02','M200489-03']}  or  {provinces:['ON','QC']},
+     status:'Open' | 'Awaiting response' | 'Resolved',
+     waitingOn:'Tesla',                         // who the next step is with (optional)
+     raised:'2026-10-10', needBy:'2026-10-24',  // optional dates
+     impactDays:7,                              // estimated ship-date impact in days (optional)
+     reference:'CO-012'                         // change order / request number (optional)
+   }
+   ============================================================ */
+const IMPACTS = [
+{id:'S1',category:'schedule',title:'SAMPLE - Ship date moved for Quebec sites',detail:'SAMPLE TEXT ONLY. Example: planned ship dates move out while an open item is resolved. Replace with the real reason.',scope:{provinces:['QC']},status:'Open',waitingOn:'Client',raised:'2026-10-05',needBy:'2026-10-09',impactDays:7,reference:'SAMPLE-1'},
+{id:'S2',category:'changeorder',title:'SAMPLE - Change order pending approval',detail:'SAMPLE TEXT ONLY. Example: work on these sites is on hold until the change order is approved.',scope:{jobs:['M200489-02','M200489-03']},status:'Awaiting response',waitingOn:'Client',raised:'2026-10-01',needBy:'2026-10-07',impactDays:10,reference:'SAMPLE-CO'},
+{id:'S3',category:'action',title:'SAMPLE - Client action item: confirm site access',detail:'SAMPLE TEXT ONLY.',scope:{provinces:['BC']},status:'Open',waitingOn:'Client',needBy:'2026-10-16'},
+{id:'S4',category:'material',title:'SAMPLE - Material status update',detail:'SAMPLE TEXT ONLY. Example: a component has a revised delivery date from the supplier.',scope:{provinces:['NB','NS']},status:'Open',waitingOn:'Supplier',impactDays:5},
+{id:'S5',category:'changerequest',title:'SAMPLE - Client change request (resolved)',detail:'SAMPLE TEXT ONLY.',scope:{type:'ALL'},status:'Resolved',raised:'2026-09-20'}
+];
+const IMPACT_ASOF = '2026-10-09';  /* update when the data is refreshed */
+const IMPACT_CATS = {
+  schedule:{label:'Schedule Impact',c:'#B45309',b:'#FEF3C7'},
+  changeorder:{label:'Change Order',c:'#6D28D9',b:'#EDE9FE'},
+  action:{label:'Client Action Item',c:'#1D4E89',b:'#DCE8F7'},
+  changerequest:{label:'Client Change Request',c:'#0F766E',b:'#CCFBF1'},
+  material:{label:'Material Status',c:'#0E7490',b:'#CFFAFE'},
+  other:{label:'Other Impact',c:'#475569',b:'#E2E8F0'}
+};
+const impEsc = x => String(x==null?'':x).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const impMon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const impFmt = iso => { if(!iso) return ''; const [y,m,d]=iso.split('-'); return impMon[+m-1]+' '+(+d)+', '+y; };
+const impDays = iso => Math.round((new Date(iso+'T00:00:00')-new Date(IMPACT_ASOF+'T00:00:00'))/86400000);
+const impIsOpen = n => n.status!=='Resolved';
+function impMatches(n, s){
+  const sc = n.scope || {type:'ALL'};
+  if(sc.jobs && sc.jobs.length) return sc.jobs.includes(s.job);
+  if(sc.provinces && sc.provinces.length) return sc.provinces.includes(s.province);
+  return true;
+}
+function impScopeLabel(n){
+  const sc = n.scope || {type:'ALL'};
+  if(sc.jobs && sc.jobs.length) return sc.jobs.map(j=>{ const x=byJob[j]; return x ? x.location+' ('+j+')' : j; }).join(', ');
+  if(sc.provinces && sc.provinces.length) return 'Sites in '+sc.provinces.join(', ');
+  return 'Entire order';
+}
+const impFor = s => s.status==='Shipped' ? [] : IMPACTS.filter(n=>impIsOpen(n) && impMatches(n,s));
+function impFlag(s){ const k = impFor(s).length; return k ? `<span class="imp-flag" title="This site has an order note">${k===1?'Note':k+' notes'}</span>` : ''; }
+function impSitePanel(s){
+  const list = impFor(s); if(!list.length) return '';
+  return `<div class="uimp"><h5>Order note</h5>${list.map(n=>{
+    const cat = IMPACT_CATS[n.category] || IMPACT_CATS.other;
+    return `<div class="u1"><b>${impEsc(cat.label)} &middot; ${impEsc(n.title)}</b><span>${impEsc(n.detail||'')}</span>
+      <em>${n.waitingOn?'Waiting on <b style="display:inline;font-size:inherit;">'+impEsc(n.waitingOn)+'</b>':''}${n.needBy?(n.waitingOn?' &middot; ':'')+'Needed by '+impFmt(n.needBy):''}${n.impactDays?' &middot; Est. impact +'+n.impactDays+' days':''}</em></div>`;
+  }).join('')}</div>`;
+}
+let impFilter = 'all', impShowAll = false;
+
+/* ---- Schedule watch: a site counts when it is not shipped and its planned ship date has passed (as of the page date). Evidence only; nothing is judged. ---- */
+function wList(){ return SITES.filter(s=>s.status!=='Shipped' && s.pd && days(ASOF,s.pd)<0).map(s=>({s, late:-days(ASOF,s.pd)})).sort((a,b)=>b.late-a.late || a.s.job.localeCompare(b.s.job)); }
+function renderWatchPill(){
+  const el=$('wpillWrap'); if(!el) return; const l=wList(), max=Math.max(0,...l.map(x=>x.late));
+  el.innerHTML = l.length ? `<div class="wpill ${max>5?'late':'watch'}" id="wpillGo" title="Click to see which sites and why">${max>5?'Behind plan':'Schedule watch'} &middot; ${l.length} site${l.length>1?'s':''} past planned ship &rsaquo;</div>` : `<div class="wpill ontrack">On schedule</div>`;
+  const go=$('wpillGo'); if(go) go.onclick=openWatch;
+}
+(function(){
+  const back=document.createElement('div'); back.className='wch-back'; back.id='wchBack'; back.innerHTML='<div class="wch" id="wchBox"></div>'; document.body.appendChild(back);
+  back.addEventListener('click',e=>{ if(e.target===back) back.classList.remove('open'); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') back.classList.remove('open'); });
+})();
+function openWatch(){
+  const list=wList(), box=$('wchBox'), maxLate=Math.max(0,...list.map(w=>w.late));
+  const notices = IMPACTS.filter(n=>impIsOpen(n) && list.some(w=>impMatches(n,w.s)));
+  box.innerHTML = `<div class="wch-h"><div><h3>Schedule watch</h3><p>${list.length} site${list.length>1?'s are':' is'} past the planned ship date shown in the site list, as of ${impFmt(ASOF)}${maxLate?` (up to ${maxLate} day${maxLate>1?'s':''})`:''}. Each site can be opened for its full progress timeline.</p></div><button class="wch-x" id="wchX">&times;</button></div>
+    <div class="wch-b">
+      ${notices.map(n=>{ const c=IMPACT_CATS[n.category]||IMPACT_CATS.other; return `<div class="wch-note"><b>${impEsc(c.label)} &middot; ${impEsc(n.title)}</b>${impEsc(n.detail||'')}<div style="margin-top:4px;color:var(--text-muted);font-size:12px;">${n.waitingOn?'Waiting on <b style="display:inline;color:var(--text)">'+impEsc(n.waitingOn)+'</b>':''}${n.needBy?(n.waitingOn?' &middot; ':'')+'Needed by '+impFmt(n.needBy):''}${n.reference?' &middot; Ref '+impEsc(n.reference):''}</div></div>`; }).join('')}
+      <table><thead><tr><th>Site</th><th>Status</th><th>Planned ship</th><th>Past planned date</th></tr></thead><tbody>
+      ${list.map(w=>`<tr class="wu" data-wjob="${w.s.job}"><td><b>${esc(w.s.location)}</b><div style="font-size:11px;color:var(--text-muted)">${w.s.job}</div></td><td>${w.s.status}</td><td>${planTxt(w.s)}</td><td class="wch-late">${w.late} day${w.late>1?'s':''}</td></tr>`).join('')}
+      </tbody></table></div>`;
+  $('wchBack').classList.add('open'); $('wchX').onclick=()=>$('wchBack').classList.remove('open');
+  box.querySelectorAll('[data-wjob]').forEach(tr=>tr.onclick=()=>{ $('wchBack').classList.remove('open'); openSite(tr.dataset.wjob, list.map(w=>w.s.job)); });
+}
+
+function cvRenderImpacts(){
+  const wrap = document.getElementById('cvImpactWrap'); if(!wrap) return;
+  if(!IMPACTS.length){ wrap.innerHTML=''; return; }
+  const open = IMPACTS.filter(impIsOpen);
+  const awaiting = open.filter(n=>n.status==='Awaiting response').length;
+  const days = open.map(n=>n.impactDays||0), maxDays = days.length?Math.max(...days):0;
+  const overdue = open.filter(n=>n.needBy && impDays(n.needBy)<0).length;
+  const cats = Object.keys(IMPACT_CATS).filter(k=>IMPACTS.some(n=>n.category===k));
+  let items = IMPACTS.filter(n=>(impFilter==='all'||n.category===impFilter));
+  items = items.slice().sort((a,b)=> (impIsOpen(b)-impIsOpen(a)) || String(a.needBy||'9999').localeCompare(String(b.needBy||'9999')));
+  const total = items.length; if(!impShowAll && total>3) items = items.slice(0,3);
+  const card = n=>{
+    const cat = IMPACT_CATS[n.category] || IMPACT_CATS.other, res = !impIsOpen(n);
+    const stCls = res?'done':(n.status==='Awaiting response'?'wait':'open');
+    let due=''; if(n.needBy && !res){ const d=impDays(n.needBy); due = `<span class="${d<0?'due-over':(d<=5?'due-soon':'')}">Needed by <b>${impFmt(n.needBy)}</b> (${d<0?Math.abs(d)+' day'+(d<-1?'s':'')+' overdue':(d===0?'today':'in '+d+' day'+(d>1?'s':''))})</span>`; }
+    else if(n.needBy) due = `<span>Needed by <b>${impFmt(n.needBy)}</b></span>`;
+    return `<div class="imp-card${res?' resolved':''}" style="--ic:${cat.c};--ib:${cat.b}"><div class="ibar"></div><div class="in">
+      <div class="imp-top"><span class="imp-pill">${impEsc(cat.label)}</span><span class="imp-st ${stCls}">${impEsc(n.status||'Open')}</span></div>
+      <div class="imp-title">${impEsc(n.title)}</div>
+      ${n.detail?`<p class="imp-detail">${impEsc(n.detail)}</p>`:''}
+      <div class="imp-meta"><span>Applies to <b>${impEsc(impScopeLabel(n))}</b></span>
+        ${n.waitingOn&&!res?`<span>Waiting on <b>${impEsc(n.waitingOn)}</b></span>`:''}
+        ${n.raised?`<span>Raised <b>${impFmt(n.raised)}</b></span>`:''}${due}
+        ${n.impactDays&&!res?`<span class="imp-days">Est. ship impact +${n.impactDays} days</span>`:''}
+        ${n.reference?`<span>Ref <b>${impEsc(n.reference)}</b></span>`:''}</div></div></div>`;
+  };
+  wrap.innerHTML = `<div class="label">Order Notes</div>
+    <div class="imp-panel">
+      <p class="imp-intro">Notes on items that may affect planned ship dates. Where a step is waiting on a response, approval or decision, the party it is with is shown, along with the date it is needed by.</p>
+      <div class="imp-sum">
+        <div class="t"><b>${open.length}</b><span>Open notes</span></div>
+        <div class="t"><b>${awaiting}</b><span>Awaiting a response</span></div>
+        <div class="t"><b>${overdue}</b><span>Past needed-by date</span></div>
+        <div class="t"><b>${maxDays?'+'+maxDays+' d':'&mdash;'}</b><span>Largest est. ship impact</span></div>
+      </div>
+      <div class="imp-chips"><button class="imp-chip${impFilter==='all'?' active':''}" data-impf="all">All (${IMPACTS.length})</button>
+        ${cats.map(k=>`<button class="imp-chip${impFilter===k?' active':''}" data-impf="${k}">${IMPACT_CATS[k].label} (${IMPACTS.filter(n=>n.category===k).length})</button>`).join('')}</div>
+      <div class="imp-list">${items.map(card).join('') || '<div class="imp-intro">No items match this filter.</div>'}</div>
+      ${total>3?`<button class="imp-more" id="impMore">${impShowAll?'Show fewer':'Show all '+total+' items'}</button>`:''}
+    </div>`;
+}
+document.addEventListener('click',(e)=>{
+  if(e.target.closest('#impMore')){ impShowAll=!impShowAll; cvRenderImpacts(); return; }
+  const c = e.target.closest('[data-impf]'); if(c){ impFilter=c.dataset.impf; cvRenderImpacts(); }
+}, true);
+
 
 const ST = [
   {k:'Shipped', c:'var(--c-ship)', p:'p-ship'},
@@ -263,6 +471,7 @@ function openSite(job, list){
   const b=s.breaker;
   const brkCard = `<div class="cd"><h4>Main breakers</h4>${b?kv('Configuration',esc(b.config))+kv('2,000 A',b.b2000==='Here'?'On hand':/^\d{4}-/.test(b.b2000||'')?fmt(b.b2000):esc(b.b2000||'—'))+kv('1,200 A',b.b1200==='Here'?'On hand':/^\d{4}-/.test(b.b1200||'')?fmt(b.b1200):esc(b.b1200||'—'))+kv('Overall',brkLabel(s)):'<div style="font-size:12.5px;color:var(--text-faint)">Not yet available</div>'}</div>`;
   let body=`<div class="banner">${pill(s)}<div class="nx">${nextStep(s)}</div></div>
+    ${impSitePanel(s)}
     <div class="sec" style="margin-top:0">Progress</div>${timeline(s)}
     <div class="sec">Details</div><div class="cards">
       <div class="cd"><h4>Site</h4>${kv('Location',esc(s.location))}${kv('Province',s.province)}${kv('Address',esc(s.address||s.demoNote||'To be confirmed'))}${kv('PO number',s.po)}${I?kv('TRT #',esc(s.trt||'—'))+kv('Freight',s.freight?'Yes':'No'):''}</div>
@@ -306,7 +515,7 @@ const SV = {job:s=>s.job, location:s=>s.location.toLowerCase(), sw:s=>s.variant|
 const sortRows=(rows,st)=>rows.slice().sort((a,b)=>{const x=SV[st.k](a),y=SV[st.k](b); return (x<y?-1:x>y?1:a.job.localeCompare(b.job))*st.d;});
 function markSort(tbl,st){ tbl.querySelectorAll('th[data-sort]').forEach(th=>{ th.textContent=th.textContent.replace(/ [▲▼]$/,''); if(th.dataset.sort===st.k) th.textContent+=st.d>0?' ▲':' ▼'; }); }
 
-/* ---------- Client ---------- */
+/* ---------- customer ---------- */
 const cf = {status:null, kpi:null}; let cSort={k:'job',d:1}, cRows=[];
 const next30 = s => s.status!=='Shipped' && s.pd && days(ASOF,s.pd)>=0 && days(ASOF,s.pd)<=30;
 const N = SITES.length, nShip = SITES.filter(s=>s.status==='Shipped').length, nReady = SITES.filter(s=>s.status==='Ready to Ship').length;
@@ -367,14 +576,14 @@ function cTable(){
   const list=cRows.map(s=>s.job);
   cRows.forEach(s=>{
     const tr=document.createElement('tr'); tr.className='row';
-    tr.innerHTML=`<td style="width:22px;color:#94A3B8">›</td><td class="mono">${s.job}</td><td><b>${esc(s.location)}</b></td><td>${sw(s)}</td><td>${tfx(s)}</td><td>${brkPill(s)}</td><td>${pill(s)}</td><td>${planTxt(s)}</td><td>${fmt(s.actualShip)}</td>`;
+    tr.innerHTML=`<td style="width:22px;color:#94A3B8">›</td><td class="mono">${s.job}</td><td><b>${esc(s.location)}</b></td><td>${sw(s)}</td><td>${tfx(s)}</td><td>${brkPill(s)}</td><td>${pill(s)}${impFlag(s)}</td><td>${planTxt(s)}</td><td>${fmt(s.actualShip)}</td>`;
     tr.onclick=()=>openSite(s.job,list); tb.appendChild(tr);
   });
   markSort($('cBody').closest('table'),cSort);
 }
 document.querySelectorAll('#cust th[data-sort]').forEach(th=>th.onclick=()=>{ cSort=cSort.k===th.dataset.sort?{k:cSort.k,d:-cSort.d}:{k:th.dataset.sort,d:1}; cTable(); });
 pSel.onchange=cTable; sSel.onchange=()=>{cf.status=sSel.value||null; cStack(); cTable();}; $('cQ').oninput=cTable;
-cStack(); monthChart(); provChart(); cTable();
+cStack(); monthChart(); provChart(); cTable(); cvRenderImpacts(); renderWatchPill();
 
 /* ---------- internal ---------- */
 const brkCounts=(()=>{const c={}; SITES.forEach(s=>{const k=brkGroup(s); c[k]=(c[k]||0)+1;}); return c;})();
@@ -408,8 +617,8 @@ iS.onchange=iTable; $('iQ').oninput=iTable; iTable();
 
 /* ---------- view switch ---------- */
 const bC=$('bC'), bI=$('bI'), nt=$('note');
-bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Client view · data as of Oct 20, 2026';};
-bI.onclick=()=>{closeSheet();bI.classList.add('active');bC.classList.remove('active');$('intl').classList.add('active');$('cust').classList.remove('active');nt.textContent='Internal view · not for Client distribution';};
+bC.onclick=()=>{closeSheet();bC.classList.add('active');bI.classList.remove('active');$('cust').classList.add('active');$('intl').classList.remove('active');nt.textContent='Client view · data as of Oct 9, 2026';};
+bI.onclick=()=>{closeSheet();bI.classList.add('active');bC.classList.remove('active');$('intl').classList.add('active');$('cust').classList.remove('active');nt.textContent='Internal view · not for customer distribution';};
 
 </script>
 </body>
