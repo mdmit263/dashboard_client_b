@@ -160,6 +160,7 @@
   .wch-late{font-weight:800;color:#B45309;}
   .wch-note{border:1px solid #F5D9A5;background:#FFFBEB;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:12.5px;line-height:1.5;}
   .wch-note b{color:var(--rev-navy);display:block;}
+  .wch-vendor{margin:14px 0 4px;padding:10px 14px;border-radius:10px;background:#FEF3C7;color:#92400E;font-size:13px;font-weight:700;border:1px solid #FDE68A;}
   .wch-go{margin-top:14px;display:inline-block;background:var(--rev-navy);color:#fff;border:0;border-radius:999px;padding:8px 18px;font-weight:800;font-size:12.5px;cursor:pointer;font-family:inherit;}
 
   .cv-status-pill.click{cursor:pointer;} .cv-status-pill.click:hover{filter:brightness(.96);box-shadow:0 0 0 2px rgba(180,83,9,.18);}
@@ -320,6 +321,8 @@ function renderWatchPill(){
   back.addEventListener('click',e=>{ if(e.target===back) back.classList.remove('open'); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') back.classList.remove('open'); });
 })();
+/* Note shown at the end of the schedule popup and on the unit/site panel for units that are past planned ship. Edit the text here. */
+const WATCH_NOTE = 'Note: delay due to vendor';
 function openWatch(){
   const list=wList(), box=$('wchBox'), maxLate=Math.max(0,...list.map(w=>w.late));
   const notices = IMPACTS.filter(n=>impIsOpen(n) && list.some(w=>impMatches(n,w.s)));
@@ -328,7 +331,7 @@ function openWatch(){
       ${notices.map(n=>{ const c=IMPACT_CATS[n.category]||IMPACT_CATS.other; return `<div class="wch-note"><b>${impEsc(c.label)} &middot; ${impEsc(n.title)}</b>${impEsc(n.detail||'')}<div style="margin-top:4px;color:var(--text-muted);font-size:12px;">${n.waitingOn?'Waiting on <b style="display:inline;color:var(--text)">'+impEsc(n.waitingOn)+'</b>':''}${n.needBy?(n.waitingOn?' &middot; ':'')+'Needed by '+impFmt(n.needBy):''}${n.reference?' &middot; Ref '+impEsc(n.reference):''}</div></div>`; }).join('')}
       <table><thead><tr><th>Site</th><th>Status</th><th>Planned ship</th><th>Past planned date</th></tr></thead><tbody>
       ${list.map(w=>`<tr class="wu" data-wjob="${w.s.job}"><td><b>${esc(w.s.location)}</b><div style="font-size:11px;color:var(--text-muted)">${w.s.job}</div></td><td>${w.s.status}</td><td>${planTxt(w.s)}</td><td class="wch-late">${w.late} day${w.late>1?'s':''}</td></tr>`).join('')}
-      </tbody></table></div>`;
+      </tbody></table><div class="wch-vendor">${WATCH_NOTE}</div></div>`;
   $('wchBack').classList.add('open'); $('wchX').onclick=()=>$('wchBack').classList.remove('open');
   box.querySelectorAll('[data-wjob]').forEach(tr=>tr.onclick=()=>{ $('wchBack').classList.remove('open'); openSite(tr.dataset.wjob, list.map(w=>w.s.job)); });
 }
@@ -484,6 +487,7 @@ function openSite(job, list){
     if(notes.length) body+=`<div class="sec">Notes</div>`+notes.map(n=>`<div class="nbox">${n}</div>`).join('');
     const f=siteFlags(job); if(f.length) body+=`<div class="sec">Data checks for this site</div>`+f.map(x=>`<div class="flag"><span class="tag ${x.t}">${x.t==='t-hi'?'CHECK':x.t==='t-md'?'REVIEW':'NOTE'}</span><span>${x.m}</span></div>`).join('');
   } else if(s.kva&&/change/i.test(s.kva)) body+=`<div class="sec">Notes</div><div class="nbox">Capacity: ${esc(s.kva)}</div>`;
+  if(wList().some(w=>w.s.job===job)) body+=`<div class="wch-vendor" style="margin-top:14px">${WATCH_NOTE}</div>`;
   const n=SH.list.length>1;
   frame(`${s.job}`, `${esc(s.location)} · ${s.province}${I?' · <b style="color:#92400E">Internal</b>':''}`, body, n?`<button class="ib" id="shP" ${SH.idx<=0?'disabled':''} title="Previous (←)">‹</button><button class="ib" id="shN" ${SH.idx>=SH.list.length-1?'disabled':''} title="Next (→)">›</button>`:'');
 }
